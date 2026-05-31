@@ -1,0 +1,24 @@
+package netology.Homework_MongoDB;
+
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoClients;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.data.mongodb.core.MongoTemplate;
+
+@Configuration
+public class MongoConfig {
+
+    @Bean
+    public MongoClient mongoClient() {
+        // Явное создание клиента с авторизацией
+        return MongoClients.create(
+                "mongodb://admin:mongo@localhost:27017/userdb?authSource=admin"
+        );
+    }
+
+    @Bean
+    public MongoTemplate mongoTemplate(MongoClient mongoClient) {
+        return new MongoTemplate(mongoClient, "userdb");
+    }
+}
