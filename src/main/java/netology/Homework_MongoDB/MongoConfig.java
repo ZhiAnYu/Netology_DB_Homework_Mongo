@@ -11,7 +11,7 @@ public class MongoConfig {
 
     @Bean
     public MongoClient mongoClient() {
-        // Явное создание клиента с авторизацией
+     
         return MongoClients.create(
                 "mongodb://admin:mongo@localhost:27017/userdb?authSource=admin"
         );
